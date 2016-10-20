@@ -16,20 +16,16 @@ class Cats
 
 
     def meow
-      print "Meow, I am #{name} Kitty.
-      I will only tolerate #{perferred_food} at "
-      if meal_time <= 11
-        print "#{meal_time} am\n"
-      else
-        print "#{meal_time} pm\n"
-      end
+      puts "Meow, I am #{name} Kitty.
+      I will only tolerate #{perferred_food} at #{eats_at}."
+
     end
 
     def eats_at
       if meal_time <= 11
-        puts "#{meal_time} am"
+        return "#{meal_time} am"
       else
-        puts "#{meal_time} pm"
+        return"#{meal_time} pm"
       end
     end
 end
