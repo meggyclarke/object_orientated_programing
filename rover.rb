@@ -10,7 +10,7 @@ class Rover
     @y_coordinate = y_coordinate
     @direction = direction
     @name = name
-    print "Welcome to Mars. The #{@name} thinks it is at #{@x_coordinate}, #{@y_coordinate}"
+    print "Welcome to Mars. The #{@name} is at #{@x_coordinate}, #{@y_coordinate}"
     puts "#{@direction}, its a beautiful shade of red."
   end
 
@@ -50,31 +50,6 @@ class Rover
         end
 
     end
-        # if direction_to_turn == "left" ****dropping print_position to use @'s'
-        #     if print_position == "N"
-        #         print_position = "E"
-        #     elsif print_position == "E"
-        #         print_position = "S"
-        #     elsif print_position == "S"
-        #         print_position = "W"
-        #     else print_position == "W"
-        #         print_position = "N"
-        #     end #end of nested if
-        #end #end of if
-
-
-    #     elsif direction_to_turn == "right" **** this is too much, lets try it as a unique dev
-    #         if print_position == "N"
-    #             print_position = "W"
-    #         elsif print_position == "W"
-    #             print_position = "S"
-    #         elsif print_position == "S"
-    #             print_position = "E"
-    #         else print_position == "E"
-    #             print_position = "N"
-    #         end #end of nested if
-    #     end #end if if
-    # end #end of def
 
     def turning_right
         if @direction == "N"
@@ -116,41 +91,65 @@ class Rover
       end #end of if
     end #end of def
 
-    #def print_position
-      #puts "inside print position"
-      #{}"#{@x_coordinate} + turn()" - hash @ advice from tyler
-       #@y_coordinate + turn()
-      #return @direction + move()
+    def max_grid
+        if  x_coordinate > 9 || x_coordinate < 1
+            abort "Mars is fun, but you have wandered out of the safe zone grid."
+        elsif y_coordinate > 9 || y_coordinate < 1
+            abort "Mars is fun, but you have wandered out of the safe zone grid."
+        end
+    end
+
+    #def personal_space
+    #    if  x_coordinate = @x_coordinate || y_coordinate =  @y_coordinate
+    #        abort "Your rover2 is ontop of rover1! Yikes get a drivers licence we are cutting you off!"
+    #    end
     #end
 end #end of class
 
-#Create new Rover instance
-#over1 = Rover.new("rover1", 0, 0, "N")
-#rover1.print_position
 
-puts " We assume the direction you start is your North (like 12 O Clock). Please enter your starting  x co-ordinate"
+puts " We assume the direction you start is your North (like 12 O Clock).
+Please enter your starting  x co-ordinate (Don't go out of the safe perimiter)"
 user_x1= gets.chomp.to_i
 
-puts "Please enter your starting  y co-ordinate"
+
+puts "Please enter your starting y co-ordinate"
 user_y1 = gets.chomp.to_i
 
+
 rover1 = Rover.new("rover1", user_x1, user_y1, "N")
+rover1.max_grid
+
 
 #capture user comands as "instructions"
 puts "Please enter your instructions (Hint need to be R, L, or M)"
 instructions = gets.chomp.upcase.to_s
 
+
 rover1.read_instruction(instructions)
 
 puts "You are now checking out the sights at #{rover1.x_coordinate}, #{rover1.y_coordinate}. Mars is Fun!"
 
+puts "Please enter your starting x co-ordinate for the second Rover.
+We assume the direction you start is your North (like 12 O Clock)."
+user_x2= gets.chomp.to_i
 
+puts "Please enter your starting y co-ordinate"
+user_y2 = gets.chomp.to_i
 
+rover2 = Rover.new("rover2", user_x2, user_y2, "N")
+rover2.max_grid#.personal_space
 
+#def personal_space
+#    takenx =  rover1.x_coordinate
+#    takeny = rover1.y_coordinate
+#        if  user_x2 = takenx || user_y2 = takeny
+#       abort "Your rover2 is ontop of rover1! Yikes get a drivers licence we are cutting you off!"
+ #  end
+#end
 
+rover2.read_instruction(instructions)
 
-# results first line of code 9 9
-#current position and direction
-#serries of left move left move move move right
-#another co-ordinates and direction
-#more moves and lefts
+#rover2.personal_space
+
+puts "Your second Rover is now gloriously gazing at #{rover2.x_coordinate}, #{rover2.y_coordinate}.
+Thats the end of your gets, thanks for visiting Mars."
