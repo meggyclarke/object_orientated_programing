@@ -153,3 +153,4 @@ rover2.read_instruction(instructions)
 
 puts "Your second Rover is now gloriously gazing at #{rover2.x_coordinate}, #{rover2.y_coordinate}.
 Thats the end of your gets, thanks for visiting Mars."
+#Rover 2 co ordinates list N then next line says facing .... need to remove N....?
